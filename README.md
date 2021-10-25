@@ -7,4 +7,24 @@ Note: This only works on `pull_request` workflow events!
 
 ## Usage
 
-...
+### Example
+
+Add this to your GitHub workflow:
+
+```yaml
+- name: Update PR number
+  uses: tarides/pr-number-action@v1
+```
+
+### Full example
+
+```yaml
+name: Populate GitHub PR number in Changelog
+on: [pull_request]
+jobs:
+  Populate-Changelog-Action:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Update PR number
+        uses: tarides/pr-number-action@v1
+```
