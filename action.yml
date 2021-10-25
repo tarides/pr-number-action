@@ -11,11 +11,11 @@ runs:
       grep "#<PR_NUMBER>" CHANGES.md >> "${MATCHES}" || true
       if [ -s "${MATCHES}" ] ; then echo "needs_replacement=1" >> $GITHUB_ENV; else echo "needs_replacement=0" >> $GITHUB_ENV; fi
       rm "${MATCHES}"
+    shell: bash
   - name: Replacing the <PR_NUMBER> variable
     run: |
       sed -i -e "s/#<PR_NUMBER>/#${{ github.event.pull_request.number }}/" CHANGES.md
-    if: ${{ env.needs_replacement == 1 }}
+    shell: bash
   - uses: getsentry/action-git-diff-suggestions@main
-    if: ${{ env.needs_replacement == 1 }}
     with:
       message: 'Populate-Changelog-Action'
