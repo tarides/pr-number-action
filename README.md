@@ -7,6 +7,24 @@ Note: This only works on `pull_request` workflow events!
 
 ## Usage
 
+First, set up the action. See below in the examples how to do so.
+
+Create a new line in your `CHANGES.md`:
+
+```markdown
+- A change (#<PR_NUMBER>, @your-github-handle)
+```
+
+Commit it on a branch and create a pull request. After the action finishes, you
+should see a suggestion comment pop up in your branch to replace `#<PR_NUMBER>`
+with the number of the pull request you just opened, e.g. `#42`. You can accept
+this suggestion at which point it will be committed on your branch.
+
+To add further changes you need to pull from your branch.
+
+Don't worry of you accidentally force-push over it, the action will just run
+again and create a new suggestion for you.
+
 ### Example
 
 Add this to your GitHub workflow:
