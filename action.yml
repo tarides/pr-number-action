@@ -5,13 +5,6 @@ runs:
   steps:
   - name: Check out repository code
     uses: actions/checkout@v2
-  - name: Determine whether <PR_NUMBER> needs to be replaced
-    run: |
-      MATCHES=$(mktemp)
-      grep "#<PR_NUMBER>" CHANGES.md >> "${MATCHES}" || true
-      if [ -s "${MATCHES}" ] ; then echo "needs_replacement=1" >> $GITHUB_ENV; else echo "needs_replacement=0" >> $GITHUB_ENV; fi
-      rm "${MATCHES}"
-    shell: bash
   - name: Replacing the <PR_NUMBER> variable
     run: |
       sed -i -e "s/#<PR_NUMBER>/#${{ github.event.pull_request.number }}/" CHANGES.md
