@@ -1,5 +1,8 @@
 name: 'Populate PR in Changelog'
 description: 'Populate GitHub Pull Request number in Changelog'
+branding:
+  icon: 'hash'
+  color: 'blue'
 runs:
   using: "composite"
   steps:
