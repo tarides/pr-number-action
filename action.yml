@@ -8,6 +8,9 @@ runs:
   steps:
   - name: Check out repository code
     uses: actions/checkout@v2
+    with:
+      ref: ${{github.event.pull_request.head.ref}}
+      repository: ${{github.event.pull_request.head.repo.full_name}}
   - name: Replacing the <PR_NUMBER> variable
     run: |
       sed -i -e "s/#<PR_NUMBER>/#${{ github.event.pull_request.number }}/" CHANGES.md
